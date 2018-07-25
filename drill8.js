@@ -1,18 +1,41 @@
 'use strict';
 
-const darray = function(array){
-  let x = 0;
-  let y = 0;
+const twoD = (array)=>{
 
-  for (let i = 0; i < array.length; i++) {
-    x = array[i];
-        
-  } for(let j = 0; j < array.length; j++ ){
-    y = array[j];
-  }
-    if(x && y === 0){
-        
+  let horizontal = [];
+  let vertical = [];
+
+  for (let a = 0; a < array.length; a++) {
+    
+    for (let b = 0; b < array.length; b++) {
+      
+      if(array[a][b] === 0 ){
+        horizontal.push(a);
+        vertical.push(b);
+      }
     }
+  }
+  
+  for (let a = 0; a < array.length; a++) {
+    
+    for (let b = 0; b < array.length; b++) {
+      
+      if(horizontal.includes(a) || vertical.includes(b)){
+        array[a][b] = 0;
+      }
+      
+    }
+  }
 
+  return array;
 
 };
+
+
+console.log(twoD(
+  [[1,0,1,1,0],
+    [0,1,1,1,0],
+    [1,1,1,1,1],
+    [1,0,1,1,1],
+    [1,1,1,1,1]]
+));
